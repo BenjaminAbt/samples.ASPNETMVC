@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- RouteNames Definiton File -->
+<!-- Gets generated automatically by Route.tt -->
+<!-- Download this Package MVCRouteCache on NuGet https://www.nuget.org/packages/MVCRouteCache/ -->
+<Routes  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="Routes.xsd">
+  <!-- Area definitions -->
+  <Area Name="Account">
+    <!-- URL "domain.com/Account/Create" calls Method "Create" in "IndexController" in Area "Account" -->
+    <Route Url="Account/Login"  Name="Account_Login" Controller="Account" Action="Login" />
+    <!-- URL "domain.com/Account/Peter" calls Method "UserDetails" with String param "userName" in "DetailsController" in Area "Account" 
+	Take care of the order!URLs with placeholders at the end or you would try to get the details of "Create" ;-)
+	-->
+    <Route Url="Account"  Name="Account" Controller="Account" Action="Index" />
+  </Area>
+
+
+  <!-- URL "domain.com" calls Method "Home" in "HomeController"-->
+  <Route Name="Home" Url="" Controller="Home" Action="Index" />
+</Routes>

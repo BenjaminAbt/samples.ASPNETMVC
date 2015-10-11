@@ -1,0 +1,89 @@
+﻿@using SchwabenCode.Web.Mvc
+@using SchwabenCode.Web.Mvc.Routing
+@model SchwabenCode.Samples.ASPMVC5_Google2WayAuthentication.Areas.Account.Models.ViewModels.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login Sample";
+}
+
+<h2>@ViewBag.Title</h2>
+@* // Error Display*@
+@Html.Partial( "~/Views/Shared/_HeadMessages.cshtml", Model )
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form method="post" action="" class="form-horizontal" role="form">
+
+                <h4>LoginSample - Defaults are entered for easier demo</h4>
+                <hr />
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Username (Demo: Admin)
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" id="Username" name="Username" class="form-control" value="Admin" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Password (Demo: 12345)
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" id="Password" name="Password" class="form-control" value="12345" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        AuthCode (Demo: 12345)
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" id="AuthCode" name="AuthCode" class="form-control" value="" placeholder="Please enter code from app." />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            <p>
+                @Html.GoogleAuthQrCode( Model.AppIdentifyName, Model.EncodedSecretForBareCode, QrCodeSize.Normal )
+            </p>
+            <p>
+                Manual Input Code: @Model.EncodedSecretForBareCode
+            </p>
+            <hr />
+            <p>
+                <h4>
+                    Google Authenticator app is available on
+                </h4>
+            </p>
+            <p>
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">
+                    <img alt="Get it on Google Play"
+                         src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+                </a>
+            </p>
+            <p>
+                <a href="https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8&uo=4" target="itunes_store" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/htmlResources/assets/en_us//images/web/linkmaker/badge_appstore-lrg.png) no-repeat;width:135px;height:40px;"></a>
+            </p>  <p>
+                <a href="http://www.windowsphone.com/en-us/store/app/authenticator/e7994dbc-2336-4950-91ba-ca22d653759b" target="_blank">
+                    <img src="@RouteCache.GetContent(Url, "~/Content/154x40_WPS_Download_blk.png" )" title="Download from Windows Phone Store" alt="" />
+                </a>
+
+            </p>
+        </section>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render( "~/bundles/jqueryval" )
+}

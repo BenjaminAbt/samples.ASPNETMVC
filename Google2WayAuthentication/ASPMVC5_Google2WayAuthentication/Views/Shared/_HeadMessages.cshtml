@@ -1,0 +1,15 @@
+﻿@model SchwabenCode.Samples.ASPMVC5_Google2WayAuthentication.Models.BaseViewModel
+@if ( Model != null && Model.HasMessages )
+{
+    <div style="width: 100%;">
+        @foreach ( var msg in Model.ErrorMessages )
+        {
+            <p style="padding: 5px; color: red; background-color: #FFDFDD; "><strong>@(msg)</strong></p>
+        }
+
+        @foreach ( var msg in Model.SuccessMessages )
+        {
+            <p style="padding: 5px; color: green; background-color: #C3FDB8; "><strong>@(msg)</strong></p>
+        }
+    </div>
+}
